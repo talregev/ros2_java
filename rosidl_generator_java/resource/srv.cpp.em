@@ -36,11 +36,18 @@ expand_template(
 jni_includes = [
     'jni.h',
 ]
+std_includes = [
+    'cstdint',
+]
 rosidl_includes = [
     'rosidl_generator_c/service_type_support_struct.h',
 ]
 }@
 @[for include in jni_includes]@
+#include <@(include)>
+@[end for]@
+
+@[for include in std_includes]@
 #include <@(include)>
 @[end for]@
 

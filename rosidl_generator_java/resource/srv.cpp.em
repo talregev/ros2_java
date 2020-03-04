@@ -32,28 +32,13 @@ expand_template(
     'msg.cpp.em',
     data,
     output_file)
-
-jni_includes = [
-    'jni.h',
-]
-std_includes = [
-    'cstdint',
-]
-rosidl_includes = [
-    'rosidl_generator_c/service_type_support_struct.h',
-]
 }@
-@[for include in jni_includes]@
-#include <@(include)>
-@[end for]@
 
-@[for include in std_includes]@
-#include <@(include)>
-@[end for]@
+#include <jni.h>
 
-@[for include in rosidl_includes]@
-#include "@(include)"
-@[end for]@
+#include <cstdint>
+
+#include "rosidl_generator_c/service_type_support_struct.h"
 
 #include "@(idl_structure_type_to_c_include_prefix(service.namespaced_type)).h"
 

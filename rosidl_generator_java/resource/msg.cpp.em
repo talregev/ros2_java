@@ -19,22 +19,6 @@ from rosidl_parser.definition import Array
 from rosidl_parser.definition import BasicType
 from rosidl_parser.definition import NamespacedType
 
-jni_includes = [
-    'jni.h',
-]
-std_includes = [
-    'cassert',
-    'cstdint',
-    'string',
-]
-rosidl_includes = [
-    'rosidl_generator_c/message_type_support_struct.h',
-]
-rcljava_includes = [
-    'rcljava_common/exceptions.h',
-    'rcljava_common/signatures.h',
-]
-
 msg_normalized_type = '__'.join(message.structure.namespaced_type.namespaced_name())
 msg_jni_type = '/'.join(message.structure.namespaced_type.namespaced_name())
 
@@ -110,21 +94,16 @@ elif message_c_include_prefix.endswith('__feedback'):
     message_c_include_prefix = message_c_include_prefix[:-10]
 }@
 
-@[for include in jni_includes]@
-#include <@(include)>
-@[end for]@
+#include <jni.h>
 
-@[for include in std_includes]@
-#include <@(include)>
-@[end for]@
+#include <cassert>
+#include <cstdint>
+#include <string>
 
-@[for include in rosidl_includes]@
-#include "@(include)"
-@[end for]@
+#include "rosidl_generator_c/message_type_support_struct.h"
 
-@[for include in rcljava_includes]@
-#include "@(include)"
-@[end for]@
+#include "rcljava_common/exceptions.h"
+#include "rcljava_common/signatures.h"
 
 @[for include in member_includes]@
 #include "@(include)"

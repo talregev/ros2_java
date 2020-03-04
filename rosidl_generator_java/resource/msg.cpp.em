@@ -79,6 +79,9 @@ for member in message.structure.members:
         include_prefix = idl_structure_type_to_c_include_prefix(type_)
         # TODO(jacobperron): Remove this logic after https://github.com/ros2/rosidl/pull/432 (Foxy)
         # Strip off any service or action suffix
+        # There are several types that actions and services are composed of, but they are included
+        # a common header that is based on the action or service name
+        # ie. there are not separate headers for each type
         if include_prefix.endswith('__request'):
             include_prefix = include_prefix[:-9]
         elif include_prefix.endswith('__response'):

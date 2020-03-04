@@ -21,8 +21,6 @@ from rosidl_parser.definition import Action
 from rosidl_parser.definition import Message
 from rosidl_parser.definition import Service
 
-# jni_package_name = package_name.replace('_', '_1')
-
 }@
 @
 @#######################################################################
@@ -31,7 +29,6 @@ from rosidl_parser.definition import Service
 @{
 data = {
     'package_name': package_name,
-    # 'jni_package_name': jni_package_name,
     'output_dir': output_dir,
     'template_basepath': template_basepath,
 }
